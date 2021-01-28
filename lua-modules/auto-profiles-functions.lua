@@ -43,7 +43,7 @@ function on_battery()
         local bat = exec({"/usr/bin/pmset", "-g", "batt"}, true)
         return string.match(bat.stdout, "Now drawing from 'Battery Power'")
     elseif is_linux then
-        local res = exec({"/bin/cat", "/sys/class/power_supply/AC/online"}, true)
+        local res = exec({"/bin/cat", "/sys/class/power_supply/ADP0/online"}, true)
         return res.stdout == "0\n"
     elseif is_windows then
         msg.warn("on_battery() not implemented on windows. PRs welcome")
